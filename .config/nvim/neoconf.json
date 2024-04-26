@@ -1,0 +1,12 @@
+{
+  "neodev": {},
+  "neoconf": {},
+  "lspconfig": {
+    "lua_ls": {
+      "Lua.diagnostics.globals": [
+        "vim"
+      ],
+      "Lua.completion.callSnippet": "Replace"
+    }
+  }
+}
