@@ -27,9 +27,9 @@ neovim kitty cava ncmpcpp mpd stow npm nodejs python3 pip lua luarocks
 Set installation path for global npm packages(so you wouldn't need to use sudo), and add the path to .bashrc
 
 ```
-mkdir "${HOME}/.npm-global-packages"
-npm config set prefix "${HOME}/.npm-global-packages"
-echo 'export PATH=~/.npm-global-packages/bin:$PATH' >> ~/.bashrc
+mkdir "${HOME}/.npm-packages"
+npm config set prefix "${HOME}/.npm-packages"
+echo 'export PATH=~/.npm-packages/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
