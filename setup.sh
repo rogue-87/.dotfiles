@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=(
+system_packages=(
   neovim
   kitty
   cava
@@ -14,7 +14,16 @@ packages=(
   lua
   luarocks
 )
-sudo dnf install "${packages[@]}" 
+
+npm_g_packages=(
+  yarn
+  pnpm
+  browser-sync
+  vscode-langservers-extracted
+)
+
+sudo dnf install "${system_packages[@]}" 
+npm i -g "${npm_g_packages[@]}"
 
 # seriously why mpd don't use these paths instead
 mkdir ~/.local/share/mpd/
@@ -24,10 +33,11 @@ touch ~/.local/share/mpd/pid
 touch ~/.local/share/mpd/database
 
 PREFIX="/home/rogue/.npm-packages"
-
 if [ ! -d "$PREFIX" ]; then
   echo "Creating prefix directory: $PREFIX"
   mkdir -p "$PREFIX"
 fi
 npm config set prefix "$PREFIX"
 echo "Global npm prefix set to: $PREFIX"
+
+stow .

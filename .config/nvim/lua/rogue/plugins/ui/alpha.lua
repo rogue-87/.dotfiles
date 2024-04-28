@@ -26,13 +26,13 @@ return {
 
 			dashboard.button("r", "  Find recent files", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"),
 
+      dashboard.button("c", "󱁻  Go to dotfiles dir", ":cd ~/.dotfiles<cr>"),
+
 			dashboard.button("l", "󰒲  Open lazy menu", "<cmd>Lazy<cr>"),
 
 			dashboard.button("m", "󱌣  Open mason menu", "<cmd>Mason<cr>"),
 
 			dashboard.button("h", "󰓙  Run healthcheck", "<cmd>checkhealth<cr>"),
-
-			dashboard.button("c", "󱁻  Go to neovim config directory", ":cd ~/.config/nvim<cr>"),
 
 			dashboard.button("q", "󰅚  Quit Neovim", ":qa<CR>"),
 		}
