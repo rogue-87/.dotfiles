@@ -16,6 +16,7 @@ system_packages=(
 )
 
 npm_g_packages=(
+  neovim
   yarn
   pnpm
   browser-sync
