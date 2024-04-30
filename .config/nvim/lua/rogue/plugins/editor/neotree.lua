@@ -34,10 +34,20 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 	end,
 	opts = {
+
+		filesystem = {
+			filtered_items = {
+				visible = true,
+				hide_dotfiles = true,
+				hide_gitignored = true,
+				hide_by_name = {},
+			},
+		},
 		window = {
 			position = "left",
 		},
 		default_component_configs = {
+
 			git_status = {
 				symbols = {
 					-- Change type

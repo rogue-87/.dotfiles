@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
+		{ "folke/neodev.nvim", opts = true },
 	},
 	config = function()
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -39,10 +39,52 @@ return {
 					},
 				})
 			end,
+			["tsserver"] = function()
+				lspconfig["tsserver"].setup({
+					capabilities = capabilities,
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"typescript",
+						"vue",
+					},
+				})
+			end,
+			["volar"] = function()
+				lspconfig["volar"].setup({
+					capabilities = capabilities,
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+					init_options = {
+						typescript = {
+							tsdk = "/home/rogue/.npm-packages/lib/node_modules/typescript/lib/",
+							-- Alternative location if installed as root:
+							-- tsdk = '/usr/local/lib/node_modules/typescript/lib'
+						},
+					},
+				})
+			end,
 			["emmet_ls"] = function()
 				lspconfig["emmet_ls"].setup({
 					capabilities = capabilities,
 					filetypes = { "html", "typescriptreact", "javascriptreact", "css", "scss" },
+				})
+			end,
+			["eslint"] = function()
+				lspconfig["eslint"].setup({
+					on_attach = function(client, bufnr)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
+						})
+					end,
 				})
 			end,
 		})
