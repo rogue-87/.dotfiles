@@ -58,6 +58,9 @@ return {
 					},
 				})
 			end,
+			--[[ ["vuels"] = function()
+				lspconfig["vuels"].setup({})
+			end, ]]
 			["volar"] = function()
 				lspconfig["volar"].setup({
 					capabilities = capabilities,
@@ -79,6 +82,7 @@ return {
 			end,
 			["eslint"] = function()
 				lspconfig["eslint"].setup({
+					capabilities = capabilities,
 					on_attach = function(client, bufnr)
 						vim.api.nvim_create_autocmd("BufWritePre", {
 							buffer = bufnr,

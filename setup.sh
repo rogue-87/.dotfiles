@@ -21,6 +21,9 @@ npm_g_packages=(
   pnpm
   browser-sync
   vscode-langservers-extracted
+  typescript
+  typescript-language-server
+  @vue-language-server
 )
 
 sudo dnf install "${system_packages[@]}" 
