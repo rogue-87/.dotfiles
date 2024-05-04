@@ -12,6 +12,7 @@ native_packages=(
   neovim
   kitty
   fastfetch
+  btop
   cava
   ncmpcpp
   mpd

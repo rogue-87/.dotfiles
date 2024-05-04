@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
 	"neovim/nvim-lspconfig",
 	-- enabled = false,
@@ -59,7 +60,9 @@ return {
 				})
 			end,
 			--[[ ["vuels"] = function()
-				lspconfig["vuels"].setup({})
+				lspconfig["vuels"].setup({
+					capabilities = capabilities,
+				})
 			end, ]]
 			["volar"] = function()
 				lspconfig["volar"].setup({

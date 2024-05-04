@@ -17,6 +17,7 @@ return {
 				"css",
 				"scss",
 				"javascript",
+				"vue",
 				"markdown",
 				"json",
 

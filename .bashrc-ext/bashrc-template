@@ -32,3 +32,4 @@ unset rc
 source ~/.bashrc-ext/oh-my.bash
 source ~/.bashrc-ext/paths.bash
 source ~/.bashrc-ext/pnpm.bash
+source ~/.bashrc-ext/env.bash

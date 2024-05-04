@@ -1,0 +1,2 @@
+$EDITOR="nvim"
+$TERMINAL="kitty"

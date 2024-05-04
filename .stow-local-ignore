@@ -2,4 +2,5 @@
 \.gitignore
 readme-stuff
 readme.md
-setup.sh
+scripts
+init.sh
