@@ -1,6 +1,6 @@
 return {
 	"jiriks74/presence.nvim",
-	enabled = false,
+	enabled = true,
 	event = "UIEnter",
 	config = true,
 }

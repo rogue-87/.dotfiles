@@ -59,11 +59,12 @@ return {
 					},
 				})
 			end,
-			--[[ ["vuels"] = function()
-				lspconfig["vuels"].setup({
+			["gopls"] = function()
+				lspconfig["gopls"].setup({
 					capabilities = capabilities,
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				})
-			end, ]]
+			end,
 			["volar"] = function()
 				lspconfig["volar"].setup({
 					capabilities = capabilities,
