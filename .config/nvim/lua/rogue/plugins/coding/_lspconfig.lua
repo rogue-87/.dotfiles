@@ -18,10 +18,6 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		-- used for searching files in the filesystem
-		-- edit user_name variable in info.lua in case you're getting errors related LSPs
-		local user_name = require("rogue.info").user_name
-
 		mason_lspconfig.setup_handlers({
 			-- Default config for all servers
 			function(server_name)
@@ -73,7 +69,7 @@ return {
 								-- location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
 
 								-- (( Preferred Path ))
-								location = "/home/".. user_name.. "/.npm-packages/lib/node_modules/@vue/typescript-plugin/",
+								location = os.getenv("HOME") .. "/.npm-packages/lib/node_modules/@vue/typescript-plugin/",
 
 								languages = { "javascript", "typescript", "vue" },
 							},
@@ -103,10 +99,10 @@ return {
 							-- tsdk = "/usr/local/lib/node_modules/typescript/lib"
 
 							-- (( Preferred Path ))
-							tsdk = "/home/".. user_name .."/.npm-packages/lib/node_modules/typescript/lib/",
+							tsdk = os.getenv("HOME") .. "/.npm-packages/lib/node_modules/typescript/lib/",
 
 							-- (( in case I'm too lazy to install the npm package lol ))
-							-- tsdk = "/home/".. user_name .."/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib/"
+							-- tsdk = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib/",
 						},
 					},
 				})
