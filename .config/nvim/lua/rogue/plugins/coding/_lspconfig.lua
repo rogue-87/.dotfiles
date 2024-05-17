@@ -91,7 +91,7 @@ return {
 					filetypes = { "javascript", "typescript", "vue", "json" },
 
 					-- (( WTF ))
-					-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+					-- filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "json" },
 
 					init_options = {
 						typescript = {
