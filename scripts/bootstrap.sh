@@ -35,7 +35,8 @@ npm_g_packages=(
   vscode-langservers-extracted
   typescript
   typescript-language-server
-  @vue-language-server
+  @vue/language-server
+  @vue/typescript-plugin
 )
 
 # set up path for global npm packages
