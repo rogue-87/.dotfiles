@@ -18,6 +18,10 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+		-- used for searching files in the filesystem
+		-- edit user_name variable in info.lua in case you're getting errors related LSPs
+		local user_name = require("rogue.info").user_name
+
 		mason_lspconfig.setup_handlers({
 			-- Default config for all servers
 			function(server_name)
@@ -64,7 +68,13 @@ return {
 						plugins = {
 							{
 								name = "@vue/typescript-plugin",
-								location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+
+								-- (( Default Path )) in case you use npm like normal people would do
+								-- location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+
+								-- (( Preferred Path ))
+								location = "/home/".. user_name.. "/.npm-packages/lib/node_modules/@vue/typescript-plugin/",
+
 								languages = { "javascript", "typescript", "vue" },
 							},
 						},
@@ -77,14 +87,26 @@ return {
 				})
 			end,
 			["volar"] = function()
+				-- in case you have a different user name change it here
 				lspconfig["volar"].setup({
 					capabilities = capabilities,
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+
+					-- (( Normie ))
+					filetypes = { "javascript", "typescript", "vue", "json" },
+
+					-- (( WTF ))
+					-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+
 					init_options = {
 						typescript = {
-							tsdk = "/home/rogue/.npm-packages/lib/node_modules/typescript/lib/",
-							-- Alternative location if installed as root:
-							-- tsdk = '/usr/local/lib/node_modules/typescript/lib'
+							-- (( Default Path ))
+							-- tsdk = "/usr/local/lib/node_modules/typescript/lib"
+
+							-- (( Preferred Path ))
+							tsdk = "/home/".. user_name .."/.npm-packages/lib/node_modules/typescript/lib/",
+
+							-- (( in case I'm too lazy to install the npm package lol ))
+							-- tsdk = "/home/".. user_name .."/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib/"
 						},
 					},
 				})
