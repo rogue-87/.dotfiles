@@ -36,7 +36,8 @@ return { -- For installing LSPs, DAPs, formatters, linters
 				-- Generic
 				"lua_ls",
 				"bashls",
-				-- "gopls",
+				"gopls",
+				"rust_analyzer",
 			},
 			automatic_installation = true,
 		})

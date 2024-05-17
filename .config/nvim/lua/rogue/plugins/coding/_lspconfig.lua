@@ -40,6 +40,23 @@ return {
 					},
 				})
 			end,
+			["gopls"] = function()
+				lspconfig["gopls"].setup({
+					capabilities = capabilities,
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+				})
+			end,
+			["rust_analyzer"] = function()
+				require("lspconfig").rust_analyzer.setup({
+					settings = {
+						["rust-analyzer"] = {
+							diagnostics = {
+								enable = false,
+							},
+						},
+					},
+				})
+			end,
 			["tsserver"] = function()
 				lspconfig["tsserver"].setup({
 					capabilities = capabilities,
@@ -57,12 +74,6 @@ return {
 						"typescript",
 						"vue",
 					},
-				})
-			end,
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					capabilities = capabilities,
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				})
 			end,
 			["volar"] = function()

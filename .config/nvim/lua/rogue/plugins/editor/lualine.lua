@@ -6,11 +6,11 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = "auto",
-				-- globalstatus = true,
+				globalstatus = true,
 				disabled_filetypes = { statusline = { "alpha" } },
 			},
 			extensions = {
-				"neo-tree",
+				-- "neo-tree",
 			},
 			sections = {
 				lualine_x = {
