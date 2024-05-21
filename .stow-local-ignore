@@ -1,6 +1,6 @@
 \.git
 \.gitignore
+bashrc-template
 readme-stuff
-scripts
 readme.md
 init.sh
