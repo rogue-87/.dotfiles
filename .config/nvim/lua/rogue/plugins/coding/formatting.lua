@@ -19,6 +19,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort" },
 				bash = { "shfmt" },
+        go = {"gofmt"}
 			},
 			--[[ format_on_save = {
         lsp_fallback = true,

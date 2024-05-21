@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# add repos
+## add repos
 sudo dnf copr enable atim/lazygit -y
 sudo dnf install lazygit
 
@@ -40,7 +40,7 @@ npm_g_packages=(
 )
 
 # set up path for global npm packages
-PREFIX="/home/rogue/.npm-packages"
+PREFIX="/home/rogue/.npm/packages"
 if [ ! -d "$PREFIX" ]; then
   echo "Creating prefix directory: $PREFIX"
   mkdir -p "$PREFIX"

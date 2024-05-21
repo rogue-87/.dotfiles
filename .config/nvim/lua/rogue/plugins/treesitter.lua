@@ -23,6 +23,7 @@ return {
 
 				"python",
 				"bash",
+        "go",
 
 				-- in order for some plugins to work properly
 				"jsonc",
