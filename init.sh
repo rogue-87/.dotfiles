@@ -2,9 +2,8 @@
 
 ## add repos
 sudo dnf copr enable atim/lazygit -y
-sudo dnf install lazygit
 
-native_packages=(
+packages=(
   neovim
   kitty
   fastfetch
@@ -12,6 +11,7 @@ native_packages=(
   cava
   ncmpcpp
   mpd
+  ranger
   stow
   npm
   nodejs
@@ -44,7 +44,7 @@ npm config set prefix "$PREFIX"
 echo "Global npm prefix set to: $PREFIX"
 
 # install packages
-sudo dnf install "${system_packages[@]}" 
+sudo dnf install "${packages[@]}" 
 npm i -g "${npm_g_packages[@]}"
 
 # seriously why mpd don't use these paths instead
@@ -60,3 +60,5 @@ cp ./bashrc-template $HOME/.bashrc
 
 # finally activate dotfiles using stow
 stow .
+
+# echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
