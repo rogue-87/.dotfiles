@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 return {
 	"neovim/nvim-lspconfig",
 	-- enabled = false,
@@ -42,8 +41,10 @@ return {
 			end,
 			["gopls"] = function()
 				lspconfig["gopls"].setup({
+					cmd = { "gopls" },
 					capabilities = capabilities,
 					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					single_file_support = true,
 				})
 			end,
 			["rust_analyzer"] = function()
@@ -69,7 +70,8 @@ return {
 								-- location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
 
 								-- (( Preferred Path ))
-								location = os.getenv("HOME") .. "/.npm-packages/lib/node_modules/@vue/typescript-plugin/",
+								location = os.getenv("HOME")
+									.. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/",
 
 								languages = { "javascript", "typescript", "vue" },
 							},
@@ -99,7 +101,7 @@ return {
 							-- tsdk = "/usr/local/lib/node_modules/typescript/lib"
 
 							-- (( Preferred Path ))
-							tsdk = os.getenv("HOME") .. "/.npm-packages/lib/node_modules/typescript/lib/",
+							tsdk = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/",
 
 							-- (( in case I'm too lazy to install the npm package lol ))
 							-- tsdk = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib/",

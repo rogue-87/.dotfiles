@@ -33,36 +33,49 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 	end,
-	opts = {
-
-		filesystem = {
-			filtered_items = {
-				visible = true,
-				hide_dotfiles = true,
-				hide_gitignored = true,
-				hide_by_name = {},
-			},
-		},
-		window = {
-			position = "left",
-		},
-		default_component_configs = {
-
-			git_status = {
-				symbols = {
-					-- Change type
-					added = "", -- ✚
-					modified = "", -- 
-					deleted = "✖",
-					renamed = "󰁕",
-					-- Status type
-					untracked = "",
-					ignored = "",
-					unstaged = "",
-					staged = "",
-					conflict = "",
+	config = function()
+		require("neo-tree").setup({
+			close_if_last_window = false,
+			sort_case_insensitive = false,
+			--[[ sort_function = function(a, b)
+				if a.type == b.type then
+					return a.path > b.path
+				else
+					return a.type > b.type
+				end
+			end, ]]
+			filesystem = {
+				filtered_items = {
+					visible = true,
+					hide_dotfiles = true,
+					hide_gitignored = true,
+					hide_by_name = {},
 				},
 			},
-		},
-	},
+			window = {
+				position = "left",
+			},
+			source_selector = {
+				winbar = true,
+				statusline = false,
+			},
+			default_component_configs = {
+				git_status = {
+					symbols = {
+						-- Change type
+						added = "", -- ✚
+						modified = "", -- 
+						deleted = "✖",
+						renamed = "󰁕",
+						-- Status type
+						untracked = "",
+						ignored = "",
+						unstaged = "",
+						staged = "",
+						conflict = "",
+					},
+				},
+			},
+		})
+	end,
 }

@@ -3,7 +3,6 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		local configs = require("nvim-treesitter.configs")
-		---@diagnostic disable-next-line: missing-fields
 		configs.setup({
 			ensure_installed = {
 				"c",
@@ -23,12 +22,16 @@ return {
 
 				"python",
 				"bash",
-        "go",
+				"go",
 
 				-- in order for some plugins to work properly
 				"jsonc",
 				"markdown_inline",
 			},
+			modules = {},
+			ignore_install = {},
+			sync_install = true,
+			parser_install_dir = nil,
 			auto_install = true,
 			highlight = { enable = true },
 

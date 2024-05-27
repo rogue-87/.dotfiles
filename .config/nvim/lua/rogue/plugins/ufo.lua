@@ -17,7 +17,6 @@ return {
 		end, { desc = "Peek Fold" })
 
 		require("ufo").setup({
-			---@diagnostic disable-next-line: unused-local
 			provider_selector = function(bufnr, filetype, buftype)
 				return { "lsp", "indent" }
 			end,

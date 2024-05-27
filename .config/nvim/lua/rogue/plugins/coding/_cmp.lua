@@ -45,7 +45,6 @@ return { -- Completion Core
 				{ name = "buffer" },
 				{ name = "path" },
 			}),
-			---@diagnostic disable-next-line: missing-fields
 			formatting = {
 				format = lspkind.cmp_format({
 					mode = "symbol", -- show only symbol annotations

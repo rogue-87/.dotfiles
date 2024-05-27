@@ -1,4 +1,3 @@
----@diagnostic disable: need-check-nil
 return {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
