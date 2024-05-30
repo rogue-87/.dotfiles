@@ -12,7 +12,7 @@
 
 #### shellscript
 
-clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>`, if you want ranger devicons, and cd into the dotfiles directory, and then run setup shellscript file. oh yea, only works on fedora for now
+clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>` into your home directory, if you want ranger devicons, and cd into the dotfiles directory, and then run setup shellscript file. oh yea, only works on fedora for now
 
 ```bash
 bash setup.sh
@@ -20,7 +20,7 @@ bash setup.sh
 
 #### manual
 
-- clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>`.
+- clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>` into your home directory.
 
 - Install [lazygit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
 
@@ -36,6 +36,12 @@ bash setup.sh
 
 ```
   neovim yarn pnpm browser-sync vscode-langservers-extracted typescript typescript-language-server @vue/language-server @vue/typescript-plugin
+```
+
+- finally, run stow command(make sure you're in the dotfiles dir!)
+
+```bash
+stow .
 ```
 
 - **done!**
