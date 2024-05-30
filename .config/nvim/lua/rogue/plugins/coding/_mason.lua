@@ -32,7 +32,7 @@ return { -- For installing LSPs, DAPs, formatters, linters
 				"cssls",
 				"tsserver",
 				"jsonls",
-        "volar",
+				"volar",
 
 				-- Generic
 				"lua_ls",

@@ -1,6 +1,6 @@
 \.git
 \.gitignore
-bashrc-template
+\.gitmodules
 readme-stuff
 readme.md
 setup.sh

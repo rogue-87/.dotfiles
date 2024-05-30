@@ -28,6 +28,5 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-
 # source bash extensions
 source ~/.bashrc-ext/init.bash

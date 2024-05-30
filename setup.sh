@@ -1,8 +1,21 @@
 #!/bin/bash
 
 ## add repos
+
+# add lazygit repo
 sudo dnf copr enable atim/lazygit -y
 
+# add charm repo
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
+sudo yum install glow
+
+
+## packages list
 packages=(
   neovim
   kitty
@@ -12,6 +25,7 @@ packages=(
   ncmpcpp
   mpd
   ranger
+  lazygit
   stow
   npm
   nodejs
@@ -19,9 +33,11 @@ packages=(
   pip
   lua
   luarocks
-  lazygit
+  gloang
+  rust
 )
 
+## npm packages(required by neovim plugins)
 npm_g_packages=(
   neovim
   yarn
@@ -54,11 +70,8 @@ mkdir ~/.local/share/mpd/playlists
 touch ~/.local/share/mpd/pid
 touch ~/.local/share/mpd/database
 
-# write bashrc-template into .bashrc
+# bak up .bashrc just in case :)
 mv $HOME/.bashrc $HOME/.bashrc.bak
-cp ./bashrc-template $HOME/.bashrc
 
 # finally activate dotfiles using stow
 stow .
-
-# echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf

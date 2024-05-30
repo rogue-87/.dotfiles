@@ -2,41 +2,40 @@
 
 ### Neovim config
 
-![neovim cofnig preview](./readme-stuff/nvim_config.png)
+![neovim cofnig preview](./readme-stuff/nvim-config.png)
 
-#### lazy.nvim as my package manager coz I'm lazy :3
+#### Look at that sweet sweet startup time :p
 
-![nvim startup time](./readme-stuff/nvim_startup_time.png)
-
-### ncmpcpp (still figuring out this stuff ^^)
-
-![ncmpcpp and cava](./readme-stuff/ncmpcpp_and_cava.png)
+![nvim startup time](./readme-stuff/nvim-startup-time.png)
 
 ## Setup
 
-#### Packages
+#### shellscript
 
-Install these packages using the linux distro native package manager
+clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>`, if you want ranger devicons, and cd into the dotfiles directory, and then run setup shellscript file. oh yea, only works on fedora for now
 
-```
-neovim kitty cava ncmpcpp mpd stow npm nodejs python3 pip lua luarocks
-```
-
-#### npm setup
-
-Set installation path for global npm packages(so you wouldn't need to use sudo), and add the path to .bashrc
-
-```
-mkdir "${HOME}/.npm-packages"
-npm config set prefix "${HOME}/.npm-packages"
-echo 'export PATH=~/.npm-packages/bin:$PATH' >> ~/.bashrc
-source ~/.bashrc
+```bash
+bash setup.sh
 ```
 
-Also you may want to install these as well(please use pnpm it will save ya alot of time, no one should use npm)
+#### manual
+
+- clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>`.
+
+- Install [lazygit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
+
+- install [glow](https://github.com/charmbracelet/glow?tab=readme-ov-file#installation)
+
+- install theses packages(most likely available in the distro repo)
 
 ```
-npm i -g yarn pnpm
+  neovim kitty fastfetch btop cava ncmpcpp mpd ranger lazygit stow npm nodejs python3 pip lua luarocks gloang rust
 ```
 
-reminder to myself to make an install shellscript for this
+- install these npm packages(required by some neovim plugins)
+
+```
+  neovim yarn pnpm browser-sync vscode-langservers-extracted typescript typescript-language-server @vue/language-server @vue/typescript-plugin
+```
+
+- **done!**
