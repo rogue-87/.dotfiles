@@ -10,13 +10,12 @@ return {
 		"ziontee113/color-picker.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		keys = {
-			{ "<C-c>", "<cmd>PickColor<cr>", mode = "n", desc = "Pick color" },
-			{ "<C-c>", "<cmd>PickColorInsert<cr>", mode = "i", desc = "Pick color and insert" },
+			{ "<leader>cp", "<cmd>PickColor<cr>", mode = "n", desc = "Pick color" },
 		},
 		config = function()
 			require("color-picker").setup({
-				["icons"] = { "ﱢ", "" },
-				["border"] = "single", -- none | single | double | rounded | solid | shadow
+				["icons"] = { "󰝤", "" },
+				["border"] = "none", -- none | single | double | rounded | solid | shadow
 				["keymap"] = {
 					["U"] = "<Plug>ColorPickerSlider5Decrease",
 					["O"] = "<Plug>ColorPickerSlider5Increase",

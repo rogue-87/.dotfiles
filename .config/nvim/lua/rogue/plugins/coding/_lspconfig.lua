@@ -5,7 +5,6 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = true },
 	},
 	config = function()
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }

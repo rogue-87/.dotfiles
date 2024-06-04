@@ -1,4 +1,27 @@
-return {
+local ascii_art = {
+	neovim = {
+		[[                               __                ]],
+		[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+		[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+		[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+		[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+		[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+	},
+	rogue = {
+        [[                                                                                       ]],
+        [[                                                                                       ]],
+		[[            :::::::::       ::::::::       ::::::::      :::    :::       ::::::::::    ]],
+		[[           :+:    :+:     :+:    :+:     :+:    :+:     :+:    :+:       :+:            ]],
+		[[          +:+    +:+     +:+    +:+     +:+            +:+    +:+       +:+             ]],
+		[[         +#++:++#:      +#+    +:+     :#:            +#+    +:+       +#++:++#         ]],
+		[[        +#+    +#+     +#+    +#+     +#+   +#+#     +#+    +#+       +#+               ]],
+		[[       #+#    #+#     #+#    #+#     #+#    #+#     #+#    #+#       #+#                ]],
+		[[      ###    ###      ########       ########       ########        ##########          ]],
+        [[                                                                                        ]],
+	},
+}
+
+local module = {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
 	dependencies = {
@@ -8,14 +31,7 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
-		dashboard.section.header.val = {
-			[[                               __                ]],
-			[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-			[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-			[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-			[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-			[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-		}
+		dashboard.section.header.val = ascii_art["rogue"]
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <cr>"),
 
@@ -25,7 +41,7 @@ return {
 
 			dashboard.button("r", "  Find recent files", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"),
 
-      dashboard.button("c", "󱁻  Go to dotfiles dir", ":cd ~/.dotfiles<cr>"),
+			dashboard.button("c", "󱁻  Go to dotfiles dir", ":cd ~/dotfiles<cr>"),
 
 			dashboard.button("l", "󰒲  Open lazy menu", "<cmd>Lazy<cr>"),
 
@@ -48,3 +64,5 @@ return {
 		alpha.setup(dashboard.config)
 	end,
 }
+
+return module

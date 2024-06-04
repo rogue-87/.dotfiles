@@ -1,6 +1,6 @@
 return {
 	"IogaMaster/neocord",
-	-- enabled = false,
+	enabled = false,
 	event = "VeryLazy",
 	config = function()
 		-- The setup config table shows all available config options with their default values:
