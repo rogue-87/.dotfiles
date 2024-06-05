@@ -15,7 +15,7 @@ return {
 		config = function()
 			require("color-picker").setup({
 				["icons"] = { "󰝤", "" },
-				["border"] = "none", -- none | single | double | rounded | solid | shadow
+				["border"] = "single", -- none | single | double | rounded | solid | shadow
 				["keymap"] = {
 					["U"] = "<Plug>ColorPickerSlider5Decrease",
 					["O"] = "<Plug>ColorPickerSlider5Increase",

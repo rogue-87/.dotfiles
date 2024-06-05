@@ -28,5 +28,13 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+
+# source ~/.bashrc-ext/env.bash
+# source ~/.bashrc-ext/oh-my.bash
+# source ~/.bashrc-ext/paths.bash
+# source ~/.bashrc-ext/pnpm.bash
+
 # source bash extensions
 source ~/.bashrc-ext/init.bash
+
+export PATH=$PATH:/home/rogue/.spicetify
