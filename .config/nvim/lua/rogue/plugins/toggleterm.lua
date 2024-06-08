@@ -3,7 +3,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	event = { "VeryLazy" },
 	keys = {
-		{ "<C-`>", ":ToggleTerm<CR>", desc = "Toggle terminal float" },
+		{ "<leader>tt", ":ToggleTerm<CR>", desc = "Toggle terminal float" },
 	},
 	config = function()
 		local toggleterm = require("toggleterm")

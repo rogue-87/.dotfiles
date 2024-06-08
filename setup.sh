@@ -22,8 +22,6 @@ packages=(
   fastfetch
   btop
   cava
-  ncmpcpp
-  mpd
   ranger
   lazygit
   stow
