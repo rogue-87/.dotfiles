@@ -2,15 +2,11 @@
 
 ### Neovim config
 
-<div style=" background-color: #000; display: flex; justify-content: center; padding: 20px">
-    <img src="./readme-stuff/nvim-config.png" style="border: solid 2px #313739;">
-</div>
+![Neovim Config](./readme-stuff/nvim-config.png)
 
 #### Look at that sweet sweet startup time :p
 
-<div style=" background-color: #000; display: flex; justify-content: center; padding: 20px">
-    <img src="./readme-stuff/nvim-startup-time.png" style="border: solid 2px #313739;">
-</div>
+![Neovim Startup Time](./readme-stuff/nvim-startup-time.png)
 
 ## Setup
 
