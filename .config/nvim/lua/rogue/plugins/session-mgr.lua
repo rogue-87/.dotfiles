@@ -1,11 +1,13 @@
 return {
 	"Shatur/neovim-session-manager",
-    enabled = false,
-    version = "*",
 	dependencies = "nvim-lua/plenary.nvim",
 	config = function()
+		local Path = require("plenary.path")
+		local config = require("session_manager.config")
+
 		require("session_manager").setup({
-			autoload_mode = "Disabled",
+			sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions"),
+			autoload_mode = config.AutoloadMode.Disabled,
 			autosave_last_session = true,
 			autosave_ignore_not_normal = true,
 			autosave_ignore_dirs = {},

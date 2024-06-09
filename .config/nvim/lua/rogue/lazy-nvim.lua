@@ -15,22 +15,6 @@ require("lazy").setup({
 	install = { colorscheme = { "github_dark_default" } },
 	checker = { enabled = true },
 	spec = {
-		{
-			{
-				"folke/which-key.nvim",
-				event = "VeryLazy",
-				init = function()
-					vim.o.timeout = true
-					vim.o.timeoutlen = 300
-				end,
-				opts = {},
-			},
-			{
-				"folke/neoconf.nvim",
-				cmd = "Neoconf",
-				opts = {},
-			},
-		},
 		{ import = "rogue.plugins" },
 		{ import = "rogue.plugins.ui" },
 		{ import = "rogue.plugins.ui.themes" },

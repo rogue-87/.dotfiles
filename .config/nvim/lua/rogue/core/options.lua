@@ -1,4 +1,4 @@
--- Disable netrw
+--[[ Disable netrw ]]
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.cmd("let g:netrw_liststyle = 3")
@@ -7,8 +7,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Tab & Indentation
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 3
+vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
