@@ -16,6 +16,13 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+		-- Manually installed LSPs
+		lspconfig["fish_lsp"].setup({
+			cmd = { "fish-lsp", "start" },
+			filetypes = { "fish" },
+		})
+
+		-- LSPs installed using mason.nvim
 		mason_lspconfig.setup_handlers({
 			-- Default config for all servers
 			function(server_name)

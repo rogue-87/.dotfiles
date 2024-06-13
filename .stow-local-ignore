@@ -1,6 +1,7 @@
 \.git
 \.gitignore
 \.gitmodules
+\.bashrc-ext
 readme-stuff
 readme.md
 setup.sh
