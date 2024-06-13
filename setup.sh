@@ -69,7 +69,7 @@ touch ~/.local/share/mpd/pid
 touch ~/.local/share/mpd/database
 
 # bak up .bashrc just in case :)
-# mv $HOME/.bashrc $HOME/.bashrc.bak
+mv $HOME/.bashrc $HOME/.bashrc.bak
 
 # finally activate dotfiles using stow
 stow .

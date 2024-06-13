@@ -28,6 +28,16 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+EDITOR="nvim"
+TERMINAL="kitty"
 
-# source bash extensions
-# source ~/.bashrc-ext/init.bash
+export PATH=~/.npm/packages/bin/:$PATH
+export PATH=~/.wakatime/:$PATH
+export PATH=~/.cargo/bin/:$PATH
+export PATH=~/.local/pkgs/fish-lsp/bin/:$PATH
+
+export PNPM_HOME="/home/rogue/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
