@@ -22,7 +22,7 @@ return {
 		-- extra stuff
 		local lazygit = Terminal:new({
 			cmd = "lazygit",
-			dir = "git_dir",
+			-- dir = "git_dir",
 			direction = "float",
 			float_opts = {
 				border = "single",

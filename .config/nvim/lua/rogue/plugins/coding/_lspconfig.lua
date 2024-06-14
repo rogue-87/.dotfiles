@@ -32,6 +32,31 @@ return {
 			end,
 			["lua_ls"] = function()
 				lspconfig["lua_ls"].setup({
+					on_init = function(client)
+						local path = client.workspace_folders[1].name
+						if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+							return
+						end
+						client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+							runtime = {
+								-- Tell the language server which version of Lua you're using
+								-- (most likely LuaJIT in the case of Neovim)
+								version = "LuaJIT",
+							},
+							-- Make the server aware of Neovim runtime files
+							workspace = {
+								checkThirdParty = false,
+								library = {
+									vim.env.VIMRUNTIME,
+									-- Depending on the usage, you might want to add additional paths here.
+									-- "${3rd}/luv/library"
+									-- "${3rd}/busted/library",
+								},
+								-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+								-- library = vim.api.nvim_get_runtime_file("", true)
+							},
+						})
+					end,
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -53,72 +78,46 @@ return {
 					single_file_support = true,
 				})
 			end,
-			["rust_analyzer"] = function()
-				require("lspconfig").rust_analyzer.setup({
-					settings = {
-						["rust-analyzer"] = {
-							diagnostics = {
-								enable = false,
-							},
+			-- Web dev stuff
+			["html"] = function()
+				lspconfig["html"].setup({
+					capabilities = capabilities,
+					filetypes = { "html", "templ" },
+					init_options = {
+						configurationSection = { "html", "css", "javascript" },
+						embeddedLanguages = {
+							css = true,
+							javascript = true,
 						},
+						provideFormatter = false,
 					},
+					single_file_support = true,
+				})
+			end,
+			["cssls"] = function()
+				lspconfig["cssls"].setup({
+					capabilities = capabilities,
+					provideFormatter = false,
 				})
 			end,
 			["tsserver"] = function()
 				lspconfig["tsserver"].setup({
 					capabilities = capabilities,
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-
-								-- (( Default Path )) in case you use npm like normal people would do
-								-- location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-
-								-- (( Preferred Path ))
-								location = os.getenv("HOME")
-									.. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/",
-
-								languages = { "javascript", "typescript", "vue" },
-							},
-						},
-					},
 					filetypes = {
 						"javascript",
 						"typescript",
-						"vue",
-					},
-				})
-			end,
-			["volar"] = function()
-				-- in case you have a different user name change it here
-				lspconfig["volar"].setup({
-					capabilities = capabilities,
-
-					-- (( Normie ))
-					filetypes = { "javascript", "typescript", "vue", "json" },
-
-					-- (( WTF ))
-					-- filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "json" },
-
-					init_options = {
-						typescript = {
-							-- (( Default Path ))
-							-- tsdk = "/usr/local/lib/node_modules/typescript/lib"
-
-							-- (( Preferred Path ))
-							tsdk = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/",
-
-							-- (( in case I'm too lazy to install the npm package lol ))
-							-- tsdk = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib/",
-						},
 					},
 				})
 			end,
 			["emmet_ls"] = function()
 				lspconfig["emmet_ls"].setup({
 					capabilities = capabilities,
-					filetypes = { "html", "typescriptreact", "javascriptreact", "css", "scss" },
+					filetypes = {
+						"html",
+						"vue",
+						"css",
+						"scss",
+					},
 				})
 			end,
 			["eslint"] = function()
@@ -132,6 +131,25 @@ return {
 					end,
 				})
 			end,
+			["volar"] = function()
+				-- in case you have a different user name change it here
+				lspconfig["volar"].setup({
+					capabilities = capabilities,
+
+					filetypes = {
+						"javascript",
+						"vue",
+						"json",
+					},
+
+					init_options = {
+						typescript = {
+							tsdk = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/",
+						},
+					},
+				})
+			end,
+			-- End of Web dev stuff
 		})
 
 		local map = vim.keymap.set

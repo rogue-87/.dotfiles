@@ -29,4 +29,6 @@ vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 
 vim.wo.foldcolumn = "0"
 
+vim.o.shell = "/usr/bin/fish"
+
 vim.cmd("let g:loaded_perl_provider = 0")

@@ -17,15 +17,9 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort" },
-				bash = { "shfmt" },
-        go = {"gofmt"}
+				bash = { "beautysh" },
+				go = { "gofmt" },
 			},
-			--[[ format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      }, ]]
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>gf", function()
 			conform.format({

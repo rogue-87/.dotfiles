@@ -31,14 +31,15 @@ return { -- For installing LSPs, DAPs, formatters, linters
 				"html",
 				"cssls",
 				"tsserver",
-				"jsonls",
+            "jsonls",
+            "eslint",
 				"volar",
+            -- "emmet_ls",
 
 				-- Generic
-				"lua_ls",
-				"bashls",
-				"gopls",
-				"rust_analyzer",
+            "lua_ls",
+            "bashls",
+            "gopls",
 			},
 			automatic_installation = true,
 		})
@@ -51,13 +52,11 @@ return { -- For installing LSPs, DAPs, formatters, linters
 				-- Fomratters
 				"stylua",
 				"prettier",
-				"shfmt",
-				"isort",
+				"beautysh",
 
 				-- Linters
 				"selene",
 				"codespell",
-				"eslint",
 				"stylelint",
 
 				-- Both
