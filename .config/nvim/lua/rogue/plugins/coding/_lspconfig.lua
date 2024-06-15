@@ -1,6 +1,5 @@
 return {
 	"neovim/nvim-lspconfig",
-	-- enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
@@ -102,10 +101,20 @@ return {
 			end,
 			["tsserver"] = function()
 				lspconfig["tsserver"].setup({
-					capabilities = capabilities,
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = os.getenv("HOME")
+									.. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/",
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
 					filetypes = {
 						"javascript",
 						"typescript",
+						-- "vue",
 					},
 				})
 			end,
@@ -114,9 +123,9 @@ return {
 					capabilities = capabilities,
 					filetypes = {
 						"html",
+                  "css",
+                  "scss",
 						"vue",
-						"css",
-						"scss",
 					},
 				})
 			end,
@@ -132,21 +141,13 @@ return {
 				})
 			end,
 			["volar"] = function()
-				-- in case you have a different user name change it here
 				lspconfig["volar"].setup({
-					capabilities = capabilities,
-
-					filetypes = {
-						"javascript",
-						"vue",
-						"json",
-					},
-
 					init_options = {
 						typescript = {
 							tsdk = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/",
 						},
 					},
+					filetypes = { "vue" },
 				})
 			end,
 			-- End of Web dev stuff
