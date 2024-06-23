@@ -1,5 +1,7 @@
+local client = require("vim.lsp.client")
 return {
 	"neovim/nvim-lspconfig",
+	-- enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
@@ -96,8 +98,13 @@ return {
 			["cssls"] = function()
 				lspconfig["cssls"].setup({
 					capabilities = capabilities,
-					provideFormatter = false,
 				})
+			end,
+			["css_variables"] = function()
+				lspconfig["css_variables"].setup({})
+			end,
+			["cssmodules_ls"] = function()
+				lspconfig["cssmodules_ls"].setup({})
 			end,
 			["tsserver"] = function()
 				lspconfig["tsserver"].setup({
@@ -111,6 +118,8 @@ return {
 							},
 						},
 					},
+					--[[ on_attach = function()
+					end, ]]
 					filetypes = {
 						"javascript",
 						"typescript",
@@ -118,26 +127,14 @@ return {
 					},
 				})
 			end,
-			["emmet_ls"] = function()
-				lspconfig["emmet_ls"].setup({
+			["emmet_language_server"] = function()
+				lspconfig["emmet_language_server"].setup({
 					capabilities = capabilities,
 					filetypes = {
 						"html",
-                  "css",
-                  "scss",
-						"vue",
+						"css",
+						"scss",
 					},
-				})
-			end,
-			["eslint"] = function()
-				lspconfig["eslint"].setup({
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							buffer = bufnr,
-							command = "EslintFixAll",
-						})
-					end,
 				})
 			end,
 			["volar"] = function()

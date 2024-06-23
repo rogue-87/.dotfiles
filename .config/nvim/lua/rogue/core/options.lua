@@ -6,13 +6,17 @@ vim.cmd("let g:netrw_liststyle = 3")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Tab & Indentation
-vim.opt.tabstop = 3
-vim.opt.shiftwidth = 3
+--# Tab & Indentation
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+-- damn you javascript!
+vim.cmd("filetype plugin indent on")
 
 vim.opt.showtabline = 2
+
+--# End of Tab & Indentation
 
 -- Search
 vim.opt.incsearch = true

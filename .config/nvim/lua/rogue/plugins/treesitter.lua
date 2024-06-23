@@ -15,7 +15,6 @@ return {
 				"html",
 				"css",
 				"scss",
-				"javascript",
 				"vue",
 				"markdown",
 				"json",
@@ -29,11 +28,14 @@ return {
 				"markdown_inline",
 			},
 			modules = {},
-			ignore_install = {},
+			ignore_install = { "javascript" },
 			sync_install = true,
 			parser_install_dir = nil,
 			auto_install = true,
-			highlight = { enable = true },
+			highlight = {
+				enable = true,
+				-- disable = {},
+			},
 
 			incremental_selection = {
 				enable = true,
