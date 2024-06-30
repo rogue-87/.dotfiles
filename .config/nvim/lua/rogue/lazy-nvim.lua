@@ -21,7 +21,7 @@ require("lazy").setup({
 		{ import = "rogue.plugins.editor" },
 		{ import = "rogue.plugins.coding" },
 		{ import = "rogue.plugins.coding.snips" },
-		{ import = "rogue.plugins.stats" },
+		-- { import = "rogue.plugins.stats" },
 		{ import = "rogue.plugins.utils" },
 	},
 	ui = {

@@ -16,7 +16,7 @@ return {
 				dim_inactive = false, -- Non focused panes set to alternative background
 				module_default = true, -- Default enable value for modules
 				styles = { -- Style to be applied to different syntax groups
-					comments = "italic", -- Value is any valid attr-list value `:help attr-list`
+					comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
 					keywords = "bold",
 					types = "italic,bold",
 				},
@@ -43,6 +43,6 @@ return {
 		})
 
 		-- setup must be called before loading
-		vim.cmd("colorscheme github_dark_default")
+		vim.cmd("colorscheme github_dark")
 	end,
 }

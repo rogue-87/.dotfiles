@@ -13,9 +13,49 @@ return {
 		end
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
+		local mason_registry = require("mason-registry")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Manually installed LSPs
+		lspconfig["lua_ls"].setup({
+			on_init = function(client)
+				local path = client.workspace_folders[1].name
+				if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+					return
+				end
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						-- Tell the language server which version of Lua you're using
+						-- (most likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+					},
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- Depending on the usage, you might want to add additional paths here.
+							-- "${3rd}/luv/library"
+							-- "${3rd}/busted/library",
+						},
+						-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+						-- library = vim.api.nvim_get_runtime_file("", true)
+					},
+				})
+			end,
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		})
+
 		lspconfig["fish_lsp"].setup({
 			cmd = { "fish-lsp", "start" },
 			filetypes = { "fish" },
@@ -29,46 +69,7 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					on_init = function(client)
-						local path = client.workspace_folders[1].name
-						if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-							return
-						end
-						client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-							runtime = {
-								-- Tell the language server which version of Lua you're using
-								-- (most likely LuaJIT in the case of Neovim)
-								version = "LuaJIT",
-							},
-							-- Make the server aware of Neovim runtime files
-							workspace = {
-								checkThirdParty = false,
-								library = {
-									vim.env.VIMRUNTIME,
-									-- Depending on the usage, you might want to add additional paths here.
-									-- "${3rd}/luv/library"
-									-- "${3rd}/busted/library",
-								},
-								-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-								-- library = vim.api.nvim_get_runtime_file("", true)
-							},
-						})
-					end,
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
+			-- ["lua_ls"] = function() end,
 			["gopls"] = function()
 				lspconfig["gopls"].setup({
 					cmd = { "gopls" },
@@ -96,17 +97,32 @@ return {
 			["cssls"] = function()
 				lspconfig["cssls"].setup({
 					capabilities = capabilities,
-					provideFormatter = false,
+				})
+			end,
+			["css_variables"] = function()
+				lspconfig["css_variables"].setup({})
+			end,
+			["cssmodules_ls"] = function()
+				lspconfig["cssmodules_ls"].setup({})
+			end,
+			["emmet_language_server"] = function()
+				lspconfig["emmet_language_server"].setup({
+					capabilities = capabilities,
+					filetypes = {
+						"html",
+						"css",
+						"scss",
+					},
 				})
 			end,
 			["tsserver"] = function()
+				local vue_plugin = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/"
 				lspconfig["tsserver"].setup({
 					init_options = {
 						plugins = {
 							{
 								name = "@vue/typescript-plugin",
-								location = os.getenv("HOME")
-									.. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/",
+								location = vue_plugin,
 								languages = { "javascript", "typescript", "vue" },
 							},
 						},
@@ -114,42 +130,30 @@ return {
 					filetypes = {
 						"javascript",
 						"typescript",
-						-- "vue",
+						"javascriptreact",
+						"typescriptreact",
 					},
-				})
-			end,
-			["emmet_ls"] = function()
-				lspconfig["emmet_ls"].setup({
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-                  "css",
-                  "scss",
-						"vue",
-					},
-				})
-			end,
-			["eslint"] = function()
-				lspconfig["eslint"].setup({
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							buffer = bufnr,
-							command = "EslintFixAll",
-						})
-					end,
+					on_attach = function(client, bufnr) end,
 				})
 			end,
 			["volar"] = function()
+				local ts_lib_mason = mason_registry.get_package("vue-language-server"):get_install_path()
+					.. "/node_modules/typescript/lib"
+				local ts_lib_npm = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/"
+
 				lspconfig["volar"].setup({
 					init_options = {
 						typescript = {
-							tsdk = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/",
+							tsdk = ts_lib_mason,
 						},
 					},
 					filetypes = { "vue" },
 				})
 			end,
+			["astro"] = function()
+				lspconfig["astro"].setup({})
+			end,
+
 			-- End of Web dev stuff
 		})
 

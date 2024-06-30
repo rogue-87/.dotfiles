@@ -29,4 +29,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/rogue/\x2elocal/share/pnpm\x1e/home/rogue/\x7e/\x2elocal/share/pnpm\x1e/home/rogue/\x2elocal/pkgs/fish\x2dlsp/bin\x1e/home/rogue/\x2ecargo/bin\x1e/home/rogue/\x2ewakatime\x1e/home/rogue/\x2enpm/packages/bin
+SETUVAR fish_user_paths:/data/data/com\x2etermux/files/home/\x2elocal/share/pnpm\x1e/data/data/com\x2etermux/files/home/\x2ewakatime\x1e/data/data/com\x2etermux/files/home/\x2enpm/packages/bin\x1e/home/rogue/\x2elocal/share/pnpm\x1e/home/rogue/\x7e/\x2elocal/share/pnpm\x1e/home/rogue/\x2elocal/pkgs/fish\x2dlsp/bin\x1e/home/rogue/\x2ecargo/bin\x1e/home/rogue/\x2ewakatime\x1e/home/rogue/\x2enpm/packages/bin

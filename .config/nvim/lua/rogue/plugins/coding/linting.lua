@@ -8,10 +8,10 @@ return {
 		lint.linters_by_ft = {
 			css = { "stylelint" },
 			scss = { "stylelint" },
-			javascript = { "eslint" },
-			typescript = { "eslint" },
-			vue = { "eslint" },
-			lua = { "selene" },
+			javascript = { "eslint_d" },
+			typescript = { "eslint_d" },
+			vue = { "eslint_d" },
+			lua = { "luacheck" },
 			markdown = { "codespell" },
 		}
 

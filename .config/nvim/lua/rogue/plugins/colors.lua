@@ -8,6 +8,7 @@ return {
 	-- For color picking
 	{
 		"ziontee113/color-picker.nvim",
+    enabled = false,
 		event = { "BufReadPost", "BufNewFile" },
 		keys = {
 			{ "<leader>cp", "<cmd>PickColor<cr>", mode = "n", desc = "Pick color" },
