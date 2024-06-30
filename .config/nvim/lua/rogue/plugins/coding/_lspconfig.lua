@@ -15,6 +15,7 @@ return {
 		end
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
+		local mason_registry = require("mason-registry")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Manually installed LSPs
@@ -106,27 +107,6 @@ return {
 			["cssmodules_ls"] = function()
 				lspconfig["cssmodules_ls"].setup({})
 			end,
-			["tsserver"] = function()
-				lspconfig["tsserver"].setup({
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = os.getenv("HOME")
-									.. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/",
-								languages = { "javascript", "typescript", "vue" },
-							},
-						},
-					},
-					--[[ on_attach = function()
-					end, ]]
-					filetypes = {
-						"javascript",
-						"typescript",
-						-- "vue",
-					},
-				})
-			end,
 			["emmet_language_server"] = function()
 				lspconfig["emmet_language_server"].setup({
 					capabilities = capabilities,
@@ -137,15 +117,42 @@ return {
 					},
 				})
 			end,
+			["tsserver"] = function()
+				local vue_plugin = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/"
+				lspconfig["tsserver"].setup({
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = vue_plugin,
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"typescript",
+						"javascriptreact",
+						"typescriptreact",
+					},
+					on_attach = function(client, bufnr) end,
+				})
+			end,
 			["volar"] = function()
+				local ts_lib_mason = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/typescript/lib"
+				local ts_lib_npm = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/"
+
 				lspconfig["volar"].setup({
 					init_options = {
 						typescript = {
-							tsdk = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/",
+							tsdk = ts_lib_mason,
 						},
 					},
 					filetypes = { "vue" },
 				})
+			end,
+			["astro"] = function()
+				lspconfig["astro"].setup({})
 			end,
 			-- End of Web dev stuff
 		})

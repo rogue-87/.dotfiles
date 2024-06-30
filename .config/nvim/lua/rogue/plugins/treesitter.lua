@@ -15,6 +15,7 @@ return {
 				"html",
 				"css",
 				"scss",
+				"astro",
 				"vue",
 				"markdown",
 				"json",

@@ -10,6 +10,7 @@ return {
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 				vue = { "prettier" },
+				astro = { "prettier-plugin-astro" },
 				css = { "prettier" },
 				scss = { "prettier" },
 				html = { "prettier" },
@@ -17,7 +18,7 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
-				bash = { "beautysh" },
+				bash = { "shfmt" },
 				go = { "gofmt" },
 			},
 		})

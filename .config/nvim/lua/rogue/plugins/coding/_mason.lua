@@ -32,6 +32,7 @@ return { -- For installing LSPs, DAPs, formatters, linters
 				"cssls",
 				"tsserver",
 				"jsonls",
+				"astro",
 				"volar",
 				"emmet_language_server",
 
@@ -51,13 +52,13 @@ return { -- For installing LSPs, DAPs, formatters, linters
 				-- Fomratters
 				"stylua",
 				"prettier",
-				"beautysh",
+				"shfmt",
 
 				-- Linters
 				"selene",
 				"codespell",
 				"stylelint",
-        "eslint_d"
+				"eslint_d",
 
 				-- Both
 			},
